@@ -10,6 +10,25 @@
 //My solution
 
 function expandedForm(num) {
+    num += ''
+    let length = num.length
+    let result = ''
+    for (let i = 0; i < num.length; i++) {
+        if (num.charAt(i) !== '0') {
+            result += num.charAt(i)
+        }
+        for (let j = length; j > 1; j--) {
+            if (num.charAt(i) !== '0') {
+                result += '0'
+            }
+        }
+        length--
+        if (num.charAt(i) !== '0') {
+            result += ' + '
+        }
+    }
+    result = result.slice(0, -3)
+    return result
 }
 
-expandedForm(12)
+console.log(expandedForm(42))
