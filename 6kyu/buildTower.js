@@ -23,6 +23,32 @@
 
 function towerBuilder(nFloors) {
     let arr = []
+    let stars = ''
+    let iterator = nFloors - 1
+    let length = ((nFloors - 1) * 2) + 1
+    let chars
+    let index = 0
 
+    for (let i = 0; i < length; i++) {
+        stars += '*'
+    }
+
+    for (let i = 0; i < nFloors; i++) {
+        arr[i] = stars
+    }
+
+    for (let i = 0; i < nFloors; i++) {
+        for (let j = 0; j < iterator; j++) {
+            chars = arr[index].split('')
+            chars[j] = ' '
+            chars[chars.length - (j + 1)] = ' '
+            arr[index] = chars.join('')
+        }
+        index++
+        iterator--;
+    }
+
+    return arr
 }
-towerBuilder(2)
+
+console.log(towerBuilder(4))
